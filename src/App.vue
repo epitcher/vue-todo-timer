@@ -30,7 +30,7 @@ export default {
             tasks: []
         }
     },
-    mounted() {
+    created() {
         // Programatically add test tasks
         this.pushTask({ name: "First Task" });
         this.pushTask({ name: "Second Task" })

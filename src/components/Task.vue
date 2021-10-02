@@ -31,7 +31,7 @@ export default {
             continueCount: false
         }
     },
-    mounted() {
+    created() {
 
         setInterval(() => {
             if (this.continueCount) this.timeCount++
