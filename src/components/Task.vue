@@ -1,17 +1,19 @@
 <template>
-    <div class="task d-flex row border-bottom">
-        <div class="d-flex col mx-2 py-3">Name: {{ task.name }}</div>
-        <div class="d-flex col mx-2 py-3">Desc: {{ task.desc }}</div>
-        <div
-            class="col mx-2 my-3 btn btn-success"
-            @click="toggleContinueCount"
-        >Timer: <TimeDisplay :time="timeCount"></TimeDisplay></div>
-        <div class="col mx-2 py-3 text-center">
-            <button class="btn btn-link text-dark" @click="remove">
-                <i class="bi bi-x-lg"></i>
-            </button>
+    <!-- <router-link to="/timer/task.id"> -->
+        <div class="task d-flex row border-bottom">
+            <div class="d-flex col mx-2 py-3">Name: {{ task.name }}</div>
+            <div class="d-flex col mx-2 py-3">Desc: {{ task.desc }}</div>
+            <div class="col mx-2 my-3 btn btn-success" @click="toggleContinueCount">
+                Timer:
+                <TimeDisplay :time="timeCount"></TimeDisplay>
+            </div>
+            <div class="col mx-2 py-3 text-center">
+                <button class="btn btn-link text-dark" @click="remove">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
         </div>
-    </div>
+    <!-- </router-link> -->
 </template>
 
 <script>
@@ -42,7 +44,7 @@ export default {
         toggleContinueCount: function () {
             this.continueCount = !this.continueCount;
         },
-        remove: function() {
+        remove: function () {
             console.log(this.task.id);
             this.$emit('pop-task', this.task.id);
         }

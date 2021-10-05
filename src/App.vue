@@ -1,65 +1,59 @@
 <template>
-    <img class="mb-4" alt="Vue logo" src="./assets/logo.png" />
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Vue.js</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link to="/" class="nav-link" aria-current="page">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/timer" class="nav-link" aria-current="page">Timer</router-link>
+          </li>
+        </ul>
 
-    <div @pop-task="popTask">
-        <NewTask @add-task="pushTask"></NewTask>
-        <div class="container" v-for="(task, index) in tasks" :key="index">
-            <Task :task="task" :time="0"></Task>
-        </div>
+        <!-- Search -->
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
     </div>
+  </nav>
+
+  <router-view />
 </template>
-
-<script>
-import NewTask from './components/NewTask.vue'
-import Task from './components/Task.vue'
-
-import 'bootstrap/dist/js/bootstrap'
-
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-
-export default {
-    name: 'App',
-    components: {
-        Task,
-        NewTask
-    },
-    data() {
-        return {
-            tasks: []
-        }
-    },
-    created() {
-        // Programatically add test tasks
-        this.pushTask({ name: "First Task" });
-        this.pushTask({ name: "Second Task" })
-    },
-    methods: {
-        pushTask: function (item) {
-            item.id = Math.random().toString(16).substr(2, 8);
-            this.tasks.push(item);
-        },
-        popTask: function(id) {
-            console.log(this.tasks)
-
-            for(var i = 0; i < this.tasks.length; i++) {
-                if(this.tasks[i].id == id) {
-                    this.tasks.$delete(this.tasks, i);
-                }
-            }
-        }
-    },
-}
-</script>
 
 <style>
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 20px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
