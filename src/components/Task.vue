@@ -1,5 +1,5 @@
 <template>
-    <!-- <router-link to="/timer/task.id"> -->
+    <router-link to="/timer/task.id">
         <div class="task d-flex row border-bottom">
             <div class="d-flex col mx-2 py-3">Name: {{ task.name }}</div>
             <div class="d-flex col mx-2 py-3">Desc: {{ task.desc }}</div>
@@ -13,7 +13,7 @@
                 </button>
             </div>
         </div>
-    <!-- </router-link> -->
+    </router-link>
 </template>
 
 <script>
